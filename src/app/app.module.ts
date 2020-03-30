@@ -10,6 +10,7 @@ import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing.module';
 
+import { RegistredGameComponent } from './pages/registred-game/registred-game.component';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -20,7 +21,11 @@ import { FormsComponent } from './pages/forms/forms.component';
 import { TypographyComponent } from './pages/typography/typography.component';
 import { MapsComponent } from './pages/maps/maps.component';
 import { NotificationsComponent } from './pages/notifications/notifications.component';
-import { RegistredGameComponent } from './pages/registred-game/registred-game.component';
+
+
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+
 
 @NgModule({
   declarations: [
@@ -34,7 +39,10 @@ import { RegistredGameComponent } from './pages/registred-game/registred-game.co
     TypographyComponent,
     MapsComponent,
     NotificationsComponent,
-    RegistredGameComponent
+    RegistredGameComponent,
+    LoginComponent,
+    RegisterComponent
+
   ],
   imports: [
     BrowserModule,
