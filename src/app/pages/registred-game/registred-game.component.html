@@ -4,36 +4,37 @@
       <h5>Registrar juego</h5>
     </div>
     <div class="card-body">
-      <form>
+      <form (ngSubmit)="sendGame(f)" 
+      #f="ngForm">
         <div class="form-group row">
-          <label for="husername" class="col-sm-2 col-form-label text-nowrap">Titulo</label>
+          <label for="title"  class="col-sm-2 col-form-label text-nowrap">Titulo</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control rounded-0" id="husername" aria-describedby="emailHelp"
+            <input type="text" name="title" [(ngModel)]="game.title" class="form-control rounded-0" id="title" aria-describedby="emailHelp"
               placeholder="Titulo">
           </div>
         </div>
         <div class="form-group row">
-          <label for="staticEmail" class="col-sm-2 col-form-label text-nowrap">Descripción</label>
+          <label for="descripcion"  class="col-sm-2 col-form-label text-nowrap">Descripción</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control rounded-0" id="staticEmail" aria-describedby="emailHelp"
+            <input type="text" name="desciption" [(ngModel)]="game.description" class="form-control rounded-0" id="description" aria-describedby="emailHelp"
               placeholder="Escribe una descripcion">
           </div>
         </div>
         <div class="form-group row">
           <label for="inputPassword" class="col-sm-2 col-form-label text-nowrap">Precio</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control rounded-0" id="inputPassword" placeholder="Precio">
+            <input type="text" name="price" [(ngModel)]="game.price" class="form-control rounded-0" id="price" placeholder="Precio">
           </div>
         </div>
         <div class="form-group row">
           <label for="inputPassword" class="col-sm-2 col-form-label text-nowrap">Link imagen</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control rounded-0" id="inputPassword" placeholder="Link">
+            <input type="text" name="image" [(ngModel)]="game.image" class="form-control rounded-0" id="image" placeholder="Link">
           </div>
         </div>
         <div class="form-group">
           <label for="exampleFormControlSelect1">Categoria:</label>
-          <select class="form-control rounded-0" id="exampleFormControlSelect1">
+          <select name="category" [(ngModel)]="game.category" class="form-control rounded-0" id="category">
             <option>Disparos</option>
             <option>Aventura</option>
             <option>Estrategia</option>
@@ -44,12 +45,12 @@
         <div class="form-group row">
           <label for="inputPassword" class="col-sm-3 col-form-label text-nowrap">Año de lanzamiento:</label>
           <div class="col-sm-10">
-            <input type="date" class="form-control rounded-0" id="inputPassword" placeholder="Año lanzamiento">
+            <input type="date" name="year" [(ngModel)]="game.year" class="form-control rounded-0" id="year" placeholder="Año lanzamiento">
           </div>
         </div>
         <div class="form-group">
           <label for="exampleFormControlSelect1">Rank:</label>
-          <select class="form-control rounded-0" id="exampleFormControlSelect1">
+          <select name="rank" [(ngModel)]="game.rank" class="form-control rounded-0" id="exampleFormControlSelect1">
             <option>1</option>
             <option>2</option>
             <option>3</option>
@@ -61,7 +62,7 @@
         <div class="form-group row">
           <label for="" class="col-sm-2 col-form-label"></label>
           <div class="col-sm-10 mb-3">
-            <button type="button" class="btn btn-outline-lightning btn-block rounded-0 mb-2 mr-2">Registrar</button>
+            <button type="submit" class="btn btn-outline-lightning btn-block rounded-0 mb-2 mr-2">Registrar</button>
           </div>
         </div>
       </form>
