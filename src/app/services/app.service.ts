@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -8,7 +9,7 @@ export class AppService {
   isSidebarPinned = false;
   isSidebarToggeled = false;
 
-  constructor() { }
+  constructor( ) { }
 
   toggleSidebar() {
     this.isSidebarToggeled = ! this.isSidebarToggeled;

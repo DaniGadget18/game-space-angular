@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+
 
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { ToastrModule } from 'ngx-toastr';
@@ -18,6 +20,7 @@ import { FormsComponent } from './pages/forms/forms.component';
 import { TypographyComponent } from './pages/typography/typography.component';
 import { MapsComponent } from './pages/maps/maps.component';
 import { NotificationsComponent } from './pages/notifications/notifications.component';
+import { RegistredGameComponent } from './pages/registred-game/registred-game.component';
 
 @NgModule({
   declarations: [
@@ -30,17 +33,20 @@ import { NotificationsComponent } from './pages/notifications/notifications.comp
     FormsComponent,
     TypographyComponent,
     MapsComponent,
-    NotificationsComponent
+    NotificationsComponent,
+    RegistredGameComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CommonModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     CollapseModule.forRoot(),
     ToastrModule.forRoot()
     ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

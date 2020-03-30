@@ -4,7 +4,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { TablesComponent } from './pages/tables/tables.component';
 import { FormsComponent } from './pages/forms/forms.component';
 import { TypographyComponent } from './pages/typography/typography.component';
-import { MapsComponent } from './pages/maps/maps.component';
+import { RegistredGameComponent } from './pages/registred-game/registred-game.component';
 import { NotificationsComponent } from './pages/notifications/notifications.component';
 
 const routes: Routes = [
@@ -13,8 +13,9 @@ const routes: Routes = [
   {path: 'forms', component: FormsComponent},
   {path: 'tables', component: TablesComponent},
   {path: 'typography', component: TypographyComponent},
-  {path: 'maps', component: MapsComponent},
-  {path: 'notifications', component: NotificationsComponent}
+  {path: 'regGame', component: RegistredGameComponent},
+  {path: 'notifications', component: NotificationsComponent},
+  {path: '**', pathMatch:'full', redirectTo:'/dashboard'}
 ];
 
 @NgModule({
