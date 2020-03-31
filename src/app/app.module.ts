@@ -12,7 +12,9 @@ import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing.module';
 
-import { RegistredGameComponent } from './pages/registred-game/registred-game.component';
+import { GamesComponent } from './pages/games/games/games.component';
+import { EditGameComponent } from './pages/games/editgame/editgame.component';
+
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -41,9 +43,10 @@ import { RegisterComponent } from './components/register/register.component';
     TypographyComponent,
     MapsComponent,
     NotificationsComponent,
-    RegistredGameComponent,
+    GamesComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    EditGameComponent
 
   ],
   imports: [

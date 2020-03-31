@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { apiService } from 'src/app/services/api.services';
 import { NgForm } from '@angular/forms';
-import { GameModel } from '../../Models/game.model';
+import { GameModel } from '../../../Models/game.model';
 import Swal from 'sweetalert2';
 
 
@@ -10,11 +10,10 @@ import Swal from 'sweetalert2';
 
 
 @Component({
-  selector: 'app-registred-game',
-  templateUrl: './registred-game.component.html',
-  styleUrls: ['./registred-game.component.scss']
+  selector: 'app-games',
+  templateUrl: './games.component.html'
 })
-export class RegistredGameComponent implements OnInit {
+export class GamesComponent implements OnInit {
 
   game = new GameModel();
 
