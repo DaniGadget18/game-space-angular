@@ -29,6 +29,8 @@ import { NotificationsComponent } from './pages/notifications/notifications.comp
 
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import {FormsModule} from '@angular/forms';
+import {LoginGuard} from './login.guard';
 
 
 @NgModule({
@@ -60,6 +62,7 @@ import { RegisterComponent } from './components/register/register.component';
     ToastrModule.forRoot()
     ],
   providers: [
+    LoginGuard
   ],
   bootstrap: [AppComponent]
 })
