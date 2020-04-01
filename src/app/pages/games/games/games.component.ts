@@ -52,4 +52,33 @@ export class GamesComponent implements OnInit {
 
   }
 
+  deleteGame( game:String, id:String){
+    console.log(id);
+    Swal.fire({
+      title: '¿Estas seguro?',
+      text: `Quieres eliminar: ${game}`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Eliminar',
+      cancelButtonText: "Cancelar"
+      
+    }).then((result) => {
+      console.log(result);
+      if (result.value) {
+        console.log(id);
+
+        this.apiService.deleteGame( id ).subscribe( (params:any) => {
+
+          Swal.fire(
+            'Eliminado',
+            params.messages,
+            'success'
+          );
+        });
+      }
+    })
+  }
+
 }
