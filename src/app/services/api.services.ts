@@ -15,7 +15,7 @@ export class apiService {
     private url = 'http://game-space-api.herokuapp.com/api/games';
 
     getGames() {
-        return this.http.get("http://game-space-api.herokuapp.com/api/games/get-games");
+        return this.http.get(`${this.url}/get-games`);
     }
 
 
@@ -31,7 +31,32 @@ export class apiService {
             rank: game.rank
         };
 
-        return this.http.post(`${this.url}/registrer_game`, data);
+        return this.http.post(`${this.url}/create`, data);
 
     }
+
+    editGame( game:GameModel, id:string ){
+        const data = {
+            title: game.title,
+            description: game.description,
+            price: game.price,
+            image:game.image,
+            category: game.category,
+            year: game.year,
+            rank: game.rank
+        };
+        return this.http.post(`${this.url}/editGame/${id}`, data);
+    }
+
+    deleteGame(id:String) {
+        return this.http.post(`${this.url}/delete/${id}`, id);
+    }
+
+    getGameById( id:String ) {
+
+        return this.http.get(`${this.url}/gamebyid/${id}`);
+
+    }
+
+
 }
