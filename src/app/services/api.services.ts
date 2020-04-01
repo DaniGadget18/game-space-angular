@@ -31,7 +31,7 @@ export class apiService {
             rank: game.rank
         };
 
-        return this.http.post(`${this.url}/registrer_game`, data);
+        return this.http.post(`${this.url}/create`, data);
 
     }
 
@@ -46,6 +46,10 @@ export class apiService {
             rank: game.rank
         };
         return this.http.post(`${this.url}/editGame/${id}`, data);
+    }
+
+    deleteGame(id:String) {
+        return this.http.post(`${this.url}/delete/${id}`, id);
     }
 
     getGameById( id:String ) {

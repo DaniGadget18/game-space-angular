@@ -103,9 +103,9 @@
                   <div [routerLink]="['/games/edit',game._id]" class="btn btn-sm btn-outline-lightning rounded-0 mr-2 ">
                     <i class="far fa-edit"></i>
                   </div>
-                  <a class="btn btn-sm btn-outline-lightning rounded-0 mr-2 ">
+                  <div (click)="deleteGame(game.title, game._id)" class="btn btn-sm btn-outline-lightning rounded-0 mr-2 ">
                     <i class="far fa-trash-alt"></i>
-                  </a>
+                  </div>
                 </tr>
               </tbody>
             </table>

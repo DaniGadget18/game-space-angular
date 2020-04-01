@@ -17,8 +17,8 @@ const routes: Routes = [
   {path: 'tables', component: TablesComponent , canActivate: [LoginGuard]},
   {path: 'typography', component: TypographyComponent , canActivate: [LoginGuard]},
   {path: 'notifications', component: NotificationsComponent , canActivate: [LoginGuard]},
-  {path: 'games', component: GamesComponent, canActivate: [LoginGuard]},
-  {path: 'games/edit/:id', component: EditGameComponent, canActivate: [LoginGuard]},
+  {path: 'games', component: GamesComponent},
+  {path: 'games/edit/:id', component: EditGameComponent},
   {path: 'login', component: LoginComponent},
   {path: '**', pathMatch: 'full', redirectTo: '/dashboard', canActivate: [LoginGuard]}
 ];
