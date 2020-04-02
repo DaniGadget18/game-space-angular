@@ -10,6 +10,7 @@ import { EditGameComponent } from './pages/games/editGame/editGame.component';
 import { CreateGameComponent } from './pages/games/createGame/createGame.component';
 import {LoginComponent} from './components/login/login.component';
 import {LoginGuard} from './login.guard';
+import { UsersComponent } from './pages/users/users/users.component';
 
 const routes: Routes = [
   {path: '',   redirectTo: '/dashboard', pathMatch: 'full', canActivate: [LoginGuard]},
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path: 'games', component: GamesComponent},
   {path: 'games/create', component: CreateGameComponent},
   {path: 'games/edit/:id', component: EditGameComponent},
+  {path: 'users', component: UsersComponent},
   {path: 'login', component: LoginComponent},
   {path: '**', pathMatch: 'full', redirectTo: '/dashboard', canActivate: [LoginGuard]}
 ];

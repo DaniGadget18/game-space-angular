@@ -65,8 +65,11 @@ export class apiService {
          password: password
        };
       return this.http.post(`${this.urluser}/login`, data);
+    }
 
-  }
+    getUsers() {
+        return this.http.get(`${this.urluser}/get-users`);
+    }
 
 
 }

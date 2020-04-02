@@ -23,7 +23,6 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { TablesComponent } from './pages/tables/tables.component';
 import { FormsComponent } from './pages/forms/forms.component';
 import { TypographyComponent } from './pages/typography/typography.component';
-import { MapsComponent } from './pages/maps/maps.component';
 import { NotificationsComponent } from './pages/notifications/notifications.component';
 
 
@@ -31,6 +30,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import {LoginGuard} from './login.guard';
 import { CreateGameComponent } from './pages/games/createGame/createGame.component';
+import { UsersComponent } from './pages/users/users/users.component';
 
 
 @NgModule({
@@ -43,13 +43,13 @@ import { CreateGameComponent } from './pages/games/createGame/createGame.compone
     TablesComponent,
     FormsComponent,
     TypographyComponent,
-    MapsComponent,
     NotificationsComponent,
     GamesComponent,
     LoginComponent,
     RegisterComponent,
     EditGameComponent,
-    CreateGameComponent
+    CreateGameComponent,
+    UsersComponent
 
   ],
   imports: [
