@@ -59,14 +59,17 @@ export class apiService {
         return this.http.get(`${this.url}/gamebyid/${id}`);
 
     }
-    log( email: string, password: string ) {
+    login( email: string, password: string ) {
        const data = {
          email: email,
          password: password
        };
-      return this.http.post(`${this.urluser}/login/`, data);
+      return this.http.post(`${this.urluser}/login`, data);
+    }
 
-  }
+    getUsers() {
+        return this.http.get(`${this.urluser}/get-users`);
+    }
 
 
 }
