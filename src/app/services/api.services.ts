@@ -59,7 +59,7 @@ export class apiService {
         return this.http.get(`${this.url}/gamebyid/${id}`);
 
     }
-    login( email: string, password: string ) {
+    log( email: string, password: string ) {
        const data = {
          email: email,
          password: password
@@ -70,6 +70,6 @@ export class apiService {
     getUsers() {
         return this.http.get(`${this.urluser}/get-users`);
     }
-
-
 }
+
+
