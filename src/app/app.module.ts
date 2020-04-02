@@ -13,7 +13,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
 
 import { GamesComponent } from './pages/games/games/games.component';
-import { EditGameComponent } from './pages/games/editgame/editgame.component';
+import { EditGameComponent } from './pages/games/editGame/editGame.component';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -30,6 +30,7 @@ import { NotificationsComponent } from './pages/notifications/notifications.comp
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import {LoginGuard} from './login.guard';
+import { CreateGameComponent } from './pages/games/createGame/createGame.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import {LoginGuard} from './login.guard';
     GamesComponent,
     LoginComponent,
     RegisterComponent,
-    EditGameComponent
+    EditGameComponent,
+    CreateGameComponent
 
   ],
   imports: [

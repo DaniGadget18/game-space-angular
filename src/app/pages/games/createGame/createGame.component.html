@@ -1,10 +1,10 @@
 <div class="col-md-12 col-lg-8 mb-4 align-items-stretch">
   <div class="card border-0 rounded-0 h-100">
     <div class="card-title mb-1 p-3">
-      <h5>Editar juego</h5>
+      <h5>Registrar juego</h5>
     </div>
     <div class="card-body">
-      <form (ngSubmit)="editGame(f)" 
+      <form (ngSubmit)="sendGame(f)" 
       #f="ngForm">
         <div class="form-group row">
           <label for="title"  class="col-sm-2 col-form-label text-nowrap">Titulo</label>
@@ -16,7 +16,7 @@
         <div class="form-group row">
           <label for="descripcion"  class="col-sm-2 col-form-label text-nowrap">Descripción</label>
           <div class="col-sm-10">
-            <input type="" name="description" [(ngModel)]="game.description" class="form-control rounded-0" id="description" aria-describedby="emailHelp"
+            <input type="text" name="desciption" [(ngModel)]="game.description" class="form-control rounded-0" id="description" aria-describedby="emailHelp"
               placeholder="Escribe una descripcion">
           </div>
         </div>
@@ -62,8 +62,8 @@
         <div class="form-group row">
           <label for="" class="col-sm-2 col-form-label"></label>
           <div class="col-sm-12">
-            <button type="submit" class="btn btn-outline-lightning rounded-0 mb-2 mr-2">Editar juego</button>
-            <button type="button" [routerLink]="['/games']" routerLinkActive="router-link-active"  class="btn btn-outline-danger rounded-0 mb-2 mr-2">Regresar</button>
+            <button type="submit" class="btn btn-outline-lightning rounded-0 m-3">Registrar</button>
+            <button routerLink="/games" type="button" class="btn btn-outline-danger rounded-0 m-3">regresar</button>
           </div>
         </div>
       </form>

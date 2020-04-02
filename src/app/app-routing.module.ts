@@ -6,7 +6,8 @@ import { FormsComponent } from './pages/forms/forms.component';
 import { TypographyComponent } from './pages/typography/typography.component';
 import { GamesComponent } from './pages/games/games/games.component';
 import { NotificationsComponent } from './pages/notifications/notifications.component';
-import { EditGameComponent } from './pages/games/editgame/editgame.component';
+import { EditGameComponent } from './pages/games/editGame/editGame.component';
+import { CreateGameComponent } from './pages/games/createGame/createGame.component';
 import {LoginComponent} from './components/login/login.component';
 import {LoginGuard} from './login.guard';
 
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'typography', component: TypographyComponent , canActivate: [LoginGuard]},
   {path: 'notifications', component: NotificationsComponent , canActivate: [LoginGuard]},
   {path: 'games', component: GamesComponent},
+  {path: 'games/create', component: CreateGameComponent},
   {path: 'games/edit/:id', component: EditGameComponent},
   {path: 'login', component: LoginComponent},
   {path: '**', pathMatch: 'full', redirectTo: '/dashboard', canActivate: [LoginGuard]}
