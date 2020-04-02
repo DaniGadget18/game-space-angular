@@ -22,7 +22,7 @@ export class NavbarComponent implements OnInit {
   }
   logout() {
     // @ts-ignore
-    localStorage.removeItem(['email']);
+    localStorage.removeItem(['log']);
     this.router.navigate(['/login']);
   }
 

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {Route, Router} from '@angular/router';
+import {apiService} from '../../services/api.services';
+import {error} from 'util';
 
 @Component({
   selector: 'app-login',
@@ -9,18 +11,21 @@ import {Route, Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor( private router: Router) { }
+  // tslint:disable-next-line:no-shadowed-variable
+  constructor( private router: Router, private apiService: apiService) { }
 
   ngOnInit() {
   }
   login(form: NgForm) {
-    console.log(form.value);
-
-    if (form.value.email === form.value.email) {
-      localStorage.setItem('email', form.value.email);
-
-      this.router.navigate(['/dashboard']);
-    }}
-
+    this.apiService.log(form.value.email, form.value.password).subscribe(resp => {
+      if (resp.status === 'OK') {
+        localStorage.setItem('log', 'on');
+        this.router.navigate(['/dashboard']);
+      }
+    });
+  }
 
 }
+
+
+
