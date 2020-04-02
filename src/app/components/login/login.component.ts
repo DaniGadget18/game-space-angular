@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   }
   login(form: NgForm) {
     this.apiService.log(form.value.email, form.value.password).subscribe(resp => {
-      if (resp.status === 'OK') {
+      if (resp['status'] === 'OK') {
         localStorage.setItem('log', 'on');
         this.router.navigate(['/dashboard']);
       }
