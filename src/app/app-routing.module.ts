@@ -11,6 +11,7 @@ import { CreateGameComponent } from './pages/games/createGame/createGame.compone
 import {LoginComponent} from './components/login/login.component';
 import {LoginGuard} from './login.guard';
 import { UsersComponent } from './pages/users/users/users.component';
+import { EditUserComponent } from './pages/users/edit-user/edit-user.component';
 
 const routes: Routes = [
   {path: '',   redirectTo: '/dashboard', pathMatch: 'full', canActivate: [LoginGuard]},
@@ -23,6 +24,7 @@ const routes: Routes = [
   {path: 'games/create', component: CreateGameComponent},
   {path: 'games/edit/:id', component: EditGameComponent},
   {path: 'users', component: UsersComponent},
+  {path: 'users/edit/:id', component: EditUserComponent},
   {path: 'login', component: LoginComponent},
   {path: '**', pathMatch: 'full', redirectTo: '/dashboard', canActivate: [LoginGuard]}
 ];

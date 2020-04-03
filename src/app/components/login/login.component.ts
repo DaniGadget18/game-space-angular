@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {Route, Router} from '@angular/router';
-import {apiService} from '../../services/api.services';
+import { authServices } from '../../services/auth.services';
 import {error} from 'util';
 
 @Component({
@@ -12,12 +12,12 @@ import {error} from 'util';
 export class LoginComponent implements OnInit {
 
   // tslint:disable-next-line:no-shadowed-variable
-  constructor( private router: Router, private apiService: apiService) { }
+  constructor( private router: Router, private authservice: authServices) { }
 
   ngOnInit() {
   }
   login(form: NgForm) {
-    this.apiService.log(form.value.email, form.value.password).subscribe(resp => {
+    this.authservice.login(form.value.email, form.value.password).subscribe(resp => {
       if (resp['status'] === 'OK') {
         localStorage.setItem('log', 'on');
         this.router.navigate(['/dashboard']);

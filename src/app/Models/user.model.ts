@@ -1,4 +1,10 @@
 export class UserModel {
-  email: string;
-  password: string;
+  email: String;
+  password: String;
+  username: String;
+  role: String;
+  data: {
+    age: Number,
+    isMale: Boolean
+  }
 }
