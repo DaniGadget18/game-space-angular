@@ -7,6 +7,7 @@ import {UserModel} from '../Models/user.model';
 @Injectable({
     providedIn: 'root'
 })
+// tslint:disable-next-line:class-name
 export class apiService {
 
     constructor ( private http: HttpClient) {
@@ -70,6 +71,17 @@ export class apiService {
     getUsers() {
         return this.http.get(`${this.urluser}/get-users`);
     }
+    registeruser( email: string, password: string, username: string, age: Number, isMale: boolean ) {
+      const data = {
+        username: username,
+        email: email ,
+        password: password,
+        data: {
+        age: age,
+          isMale: isMale
+      } };
+    return this.http.post(`${this.urluser}/create`, data);
+  }
 }
 
 

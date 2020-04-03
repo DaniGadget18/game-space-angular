@@ -31,6 +31,9 @@ import { RegisterComponent } from './components/register/register.component';
 import {LoginGuard} from './login.guard';
 import { CreateGameComponent } from './pages/games/createGame/createGame.component';
 import { UsersComponent } from './pages/users/users/users.component';
+import { ComponentesComponent } from './componentes/componentes.component';
+import { ComponentsComponent } from './components/components.component';
+import { RegisterusersComponent } from './registerusers/registerusers.component';
 
 
 @NgModule({
@@ -49,7 +52,10 @@ import { UsersComponent } from './pages/users/users/users.component';
     RegisterComponent,
     EditGameComponent,
     CreateGameComponent,
-    UsersComponent
+    UsersComponent,
+    ComponentesComponent,
+    ComponentsComponent,
+    RegisterusersComponent
 
   ],
   imports: [
