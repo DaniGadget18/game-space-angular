@@ -17,13 +17,16 @@ export class GamesComponent implements OnInit {
 
   game = new GameModel();
 
+  loading:boolean = true;
+
 
   games:any[] = [];
 
   constructor( private apiService:apiService) {
-
     this.apiService.getGames().subscribe( (resp:any) =>{
+        this.loading = false;
         this.games = resp.data;
+
         console.log(this.games);
     });
    }
@@ -31,26 +34,6 @@ export class GamesComponent implements OnInit {
   ngOnInit() {
   }
 
-  sendGame( form:NgForm ) {
-
-  
-    Swal.fire({
-      allowOutsideClick: true,
-      text: 'Espere porfavor'
-    });
-    Swal.showLoading();
-
-
-    this.apiService.registredGame(this.game).subscribe( (resp:any)=> {
-      Swal.fire({
-      allowOutsideClick: true,
-      text: resp.message
-    });
-    }, (err) => {
-      console.log(err);
-    });
-
-  }
 
   deleteGame( game:String, id:String){
     console.log(id);

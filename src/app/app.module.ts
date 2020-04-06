@@ -13,7 +13,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
 
 import { GamesComponent } from './pages/games/games/games.component';
-import { EditGameComponent } from './pages/games/editgame/editgame.component';
+import { EditGameComponent } from './pages/games/editGame/editGame.component';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -23,13 +23,21 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { TablesComponent } from './pages/tables/tables.component';
 import { FormsComponent } from './pages/forms/forms.component';
 import { TypographyComponent } from './pages/typography/typography.component';
-import { MapsComponent } from './pages/maps/maps.component';
 import { NotificationsComponent } from './pages/notifications/notifications.component';
 
 
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import {LoginGuard} from './login.guard';
+import { CreateGameComponent } from './pages/games/createGame/createGame.component';
+import { UsersComponent } from './pages/users/users/users.component';
+
+import { ComponentesComponent } from './componentes/componentes.component';
+import { ComponentsComponent } from './components/components.component';
+import { RegisterusersComponent } from './registerusers/registerusers.component';
+
+import { EditUserComponent } from './pages/users/edit-user/edit-user.component';
+
 
 
 @NgModule({
@@ -42,12 +50,20 @@ import {LoginGuard} from './login.guard';
     TablesComponent,
     FormsComponent,
     TypographyComponent,
-    MapsComponent,
     NotificationsComponent,
     GamesComponent,
     LoginComponent,
     RegisterComponent,
-    EditGameComponent
+    EditGameComponent,
+    CreateGameComponent,
+    UsersComponent,
+
+    ComponentesComponent,
+    ComponentsComponent,
+    RegisterusersComponent
+
+    EditUserComponent
+
 
   ],
   imports: [
