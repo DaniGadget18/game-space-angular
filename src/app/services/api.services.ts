@@ -17,6 +17,8 @@ export class apiService {
     private url = 'http://game-space-api.herokuapp.com/api/games';
     private urluser = 'http://game-space-api.herokuapp.com/api/users';
 
+    // funciones para juegos
+
     getGames() {
         return this.http.get(`${this.url}/get-games`);
     }
@@ -60,13 +62,9 @@ export class apiService {
         return this.http.get(`${this.url}/gamebyid/${id}`);
 
     }
-    log( email: string, password: string ) {
-       const data = {
-         email: email,
-         password: password
-       };
-      return this.http.post(`${this.urluser}/login`, data);
-    }
+
+
+    // funciones para usuarios
 
     getUsers() {
         return this.http.get(`${this.urluser}/get-users`);

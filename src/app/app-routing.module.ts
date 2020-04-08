@@ -20,6 +20,8 @@ const routes: Routes = [
   {path: 'tables', component: TablesComponent , canActivate: [LoginGuard]},
   {path: 'typography', component: TypographyComponent , canActivate: [LoginGuard]},
   {path: 'notifications', component: NotificationsComponent , canActivate: [LoginGuard]},
+
+  // Rutas de la app
   {path: 'games', component: GamesComponent},
   {path: 'games/create', component: CreateGameComponent},
   {path: 'games/edit/:id', component: EditGameComponent},

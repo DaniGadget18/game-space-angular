@@ -1,30 +1,48 @@
-import { Component, OnInit } from '@angular/core';
-import {NgForm} from '@angular/forms';
-import {Route, Router} from '@angular/router';
-import { authServices } from '../../services/auth.services';
-import {error} from 'util';
+import { Component, OnInit } from "@angular/core";
+import { NgForm } from "@angular/forms";
+import { Route, Router } from "@angular/router";
+import { authServices } from "../../services/auth.services";
+import { UserModel } from "../../Models/user.model";
+import Swal from "sweetalert2";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: "app-login",
+  templateUrl: "./login.component.html",
+  styleUrls: ["./login.component.scss"],
 })
 export class LoginComponent implements OnInit {
+  user = new UserModel();
 
   // tslint:disable-next-line:no-shadowed-variable
-  constructor( private router: Router, private authservice: authServices) { }
+  constructor(private router: Router, private authservice: authServices) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
   login(form: NgForm) {
-    this.authservice.login(form.value.email, form.value.password).subscribe(resp => {
-      if (resp['status'] === 'OK') {
-        localStorage.setItem('log', 'on');
-        this.router.navigate(['/dashboard']);
+    let timerInterval;
+
+    Swal.fire({
+      title: "Espere...",
+      html: "Iniciando sesion",
+      timer: 2000,
+      timerProgressBar: true,
+      onBeforeOpen: () => {
+        Swal.showLoading();
+        timerInterval = setInterval(() => {
+          const content = Swal.getContent();
+        }, 100);
+      },
+      onClose: () => {
+        clearInterval(timerInterval);
+      },
+    }).then((result) => {
+      /* Read more about handling dismissals below */
+      if (result.dismiss === Swal.DismissReason.timer) {
+        this.authservice
+          .login(form.value.email, form.value.password)
+          .subscribe((resp) => {
+            console.log(resp);
+          });
       }
     });
   }
 }
-
-
-
