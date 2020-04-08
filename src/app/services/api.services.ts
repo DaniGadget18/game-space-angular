@@ -86,15 +86,20 @@ export class apiService {
         return this.http.get(`${this.urluser}/getusersById/${id}`);
     }
 
-    editUser(user: UserModel){
-        console.log(localStorage.getItem('token'));
+    editUser(user: UserModel, _id:String){
         const headers = new HttpHeaders({
             'token':localStorage.getItem('token'),
         });
         const data = {
-            ...user
+            data: user.data,
+            role: user.role,
+            id: _id
         };
         return this.http.post(`${this.urluser}/update`, data, { headers });
+    }
+
+    deleteUser( id:String ){
+        return this.http.post(`${this.urluser}/delete/${id}`, id);
     }
 
 }

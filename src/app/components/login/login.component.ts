@@ -40,7 +40,16 @@ export class LoginComponent implements OnInit {
         this.authservice
           .login(form.value.email, form.value.password)
           .subscribe((resp) => {
-            console.log(resp);
+            localStorage.setItem('log', 'on');
+            this.router.navigate(['/dashboard']);
+          }, (err) => {
+            if(err.error['status'] === 'error'){
+              Swal.fire({
+                icon: 'error',
+                title: 'Error al iniciar sesion',
+                text: 'Usuario o contraseña incorrecta'
+              });
+            }
           });
       }
     });

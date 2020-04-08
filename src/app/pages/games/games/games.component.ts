@@ -45,13 +45,13 @@ export class GamesComponent implements OnInit {
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Eliminar',
-      cancelButtonText: "Cancelar"
-      
+      cancelButtonText: "Cancelar" 
     }).then((result) => {
       console.log(result);
       if (result.value) {
         console.log(id);
-
+        let indice = this.games.indexOf(id);
+        this.games.splice(indice);
         this.apiService.deleteGame( id ).subscribe( (params:any) => {
 
           Swal.fire(
@@ -61,7 +61,7 @@ export class GamesComponent implements OnInit {
           );
         });
       }
-    })
+    });
   }
 
 }

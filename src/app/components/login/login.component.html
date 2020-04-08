@@ -11,8 +11,8 @@
 
     <!-- Login Form -->
     <form #LoginForm="ngForm" (ngSubmit)="login(LoginForm)" >
-      <input type="text" id="email" class="fadeIn second" name="Correo electronico" placeholder="Correo electronico"Model>
-      <input type="password" id="password" class="fadeIn third" name="Contraseña" placeholder="Contraseña" ngModel>
+      <input type="text" id="email" class="fadeIn second" name="email" placeholder="Correo electronico" [(ngModel)]="user.email">
+      <input type="password" id="password" class="fadeIn third" name="password" placeholder="Contraseña" [(ngModel)]="user.password">
       <input type="submit" class="fadeIn fourth" value="Entrar">
     </form>
 
