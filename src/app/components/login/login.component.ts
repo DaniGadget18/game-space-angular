@@ -5,6 +5,7 @@ import { authServices } from "../../services/auth.services";
 import { UserModel } from "../../Models/user.model";
 import Swal from "sweetalert2";
 
+
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
@@ -13,10 +14,12 @@ import Swal from "sweetalert2";
 export class LoginComponent implements OnInit {
   user = new UserModel();
 
+
   // tslint:disable-next-line:no-shadowed-variable
   constructor(private router: Router, private authservice: authServices) {}
 
   ngOnInit() {}
+
   login(form: NgForm) {
     let timerInterval;
 
@@ -41,6 +44,7 @@ export class LoginComponent implements OnInit {
           .login(form.value.email, form.value.password)
           .subscribe((resp) => {
             localStorage.setItem('log', 'on');
+            localStorage.setItem('email', form.value.email);
             this.router.navigate(['/dashboard']);
           }, (err) => {
             if(err.error['status'] === 'error'){

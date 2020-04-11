@@ -26,8 +26,6 @@ export class GamesComponent implements OnInit {
     this.apiService.getGames().subscribe( (resp:any) =>{
         this.loading = false;
         this.games = resp.data;
-
-        console.log(this.games);
     });
    }
 

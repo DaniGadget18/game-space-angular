@@ -26,7 +26,6 @@ import { LoginComponent } from './components/login/login.component';
 // Componentes de la aplicacion
 import { GamesComponent } from './pages/games/games/games.component';
 import { EditGameComponent } from './pages/games/editGame/editGame.component';
-import { RegisterComponent } from './components/register/register.component';
 import {LoginGuard} from './login.guard';
 import { CreateGameComponent } from './pages/games/createGame/createGame.component';
 import { UsersComponent } from './pages/users/users/users.component';
@@ -47,7 +46,6 @@ import { EditUserComponent } from './pages/users/edit-user/edit-user.component';
     NotificationsComponent,
     GamesComponent,
     LoginComponent,
-    RegisterComponent,
     EditGameComponent,
     CreateGameComponent,
     UsersComponent,
