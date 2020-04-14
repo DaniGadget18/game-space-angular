@@ -16,6 +16,7 @@ export class apiService {
 
     private url = 'http://game-space-api.herokuapp.com/api/games';
     private urluser = 'http://game-space-api.herokuapp.com/api/users';
+    private urlstatistics = 'http://game-space-api.herokuapp.com/api/statistics';
 
     // funciones para juegos
 
@@ -101,7 +102,26 @@ export class apiService {
     deleteUser( id:String ){
         return this.http.post(`${this.urluser}/delete/${id}`, id);
     }
+    // Fuciones para estadisticas
 
+    getSalesMonth() {
+      return this.http.get(`${this.urlstatistics}/getSalesMonth`);
+    }
+    getProfits() {
+      return this.http.get(`${this.urlstatistics}/getProfits`);
+    }
+    getProfitsMonth() {
+      return this.http.get(`${this.urlstatistics}/getProfitsMonth`);
+    }
+    getOrdersPerMonth() {
+      return this.http.get(`${this.urlstatistics}/getOrdersPerMonth`);
+    }
+    getProfitsLastFiveMonths() {
+      return this.http.get(`${this.urlstatistics}/getProfitsLastFiveMonths`);
+    }
+    getBestUser() {
+      return this.http.get(`${this.urlstatistics}/getBestUser`);
+    }
 }
 
 

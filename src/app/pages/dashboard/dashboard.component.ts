@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
+import {apiService} from '../../services/api.services';
+import {log} from 'util';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,10 +10,33 @@ import { Chart } from 'chart.js';
 })
 export class DashboardComponent implements OnInit {
 
+  // tslint:disable-next-line:no-shadowed-variable
+  constructor(private apiService: apiService) {
+
+  }
+  MonthSsales = this.apiService.getSalesMonth().subscribe((data: any) => {
+    console.log(data.data[0]['Month']);
+    return data.data[0]['Month'];
+  }) ;
+  getProfits = this.apiService.getProfits().subscribe((data: any) => {
+    console.log(data.data[0]);
+  }) ;
+  getProfitsMonth = this.apiService.getProfitsMonth().subscribe((data: any) => {
+    console.log(data.data[0]);
+  }) ;
+  getOrdersPerMonth = this.apiService.getOrdersPerMonth().subscribe((data: any) => {
+    console.log(data.data[0]);
+  }) ;
+  getProfitsLastFiveMonths = this.apiService.getProfitsLastFiveMonths().subscribe((data: any) => {
+    console.log(data.data[0]);
+  }) ;
+  getBestUser = this.apiService.getBestUser().subscribe((data: any) => {
+    console.log(data.data[0]);
+  }) ;
 
   chart1 = {
-    data :{
-      labels: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+    data : {
+      labels: [ 'sunday' , 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
       datasets: [{
           label: 'Premium',
           data: [50, 80, 60, 120, 80, 100, 60],
@@ -28,7 +53,7 @@ export class DashboardComponent implements OnInit {
       }
     ]
     },
-    options:{
+    options: {
       scales: {
           yAxes: [{
             ticks: {
@@ -37,18 +62,18 @@ export class DashboardComponent implements OnInit {
                 beginAtZero: true,
                 maxTicksLimit: 8,
                 padding: 10
-            }          
-        }]       
+            }
+        }]
       },
       responsive: true,
-      legend: {          
-        position:'bottom',
-        display:false
+      legend: {
+        position: 'bottom',
+        display: false
       },
     }
   };
   chart2 = {
-    data :{
+    data : {
       labels: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
       datasets: [{
           label: 'Premium',
@@ -66,7 +91,7 @@ export class DashboardComponent implements OnInit {
       }
     ]
     },
-    options:{
+    options: {
       barValueSpacing: 1,
       scales: {
           yAxes: [{
@@ -76,42 +101,40 @@ export class DashboardComponent implements OnInit {
                 beginAtZero: true,
                 maxTicksLimit: 8,
                 padding: 10
-            }          
+            }
         }],
         xAxes: [{
-          barPercentage: 0.4      
-      }]       
+          barPercentage: 0.4
+      }]
       },
       responsive: true,
-      legend: {          
-        position:'bottom',
-        display:false
+      legend: {
+        position: 'bottom',
+        display: false
       },
     }
   };
   chart3 = {
-    data:{
+    data: {
       datasets: [{
           data: [6, 12, 10],
-          backgroundColor: ["#5b6582","#98a4c7","#36a2eb"],
+          backgroundColor: ['#5b6582', '#98a4c7', '#36a2eb'],
       }],
       labels: [
           'html',
           'css',
           'javascript'
       ]
-      
+
     },
-    options:{
-      legend: {          
-        position:'bottom',
-        display:false
+    options: {
+      legend: {
+        position: 'bottom',
+        display: false
       },
       cutoutPercentage: 80
     }
   };
-
-  constructor() { }
 
   ngOnInit() {
 
@@ -128,7 +151,7 @@ export class DashboardComponent implements OnInit {
  new Chart('chart-doughnut',  {
       type: 'doughnut',
       data: this.chart3.data,
-      options:this.chart3.options
+      options: this.chart3.options
     });
 
   }
