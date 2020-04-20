@@ -12,6 +12,7 @@ import {LoginGuard} from './login.guard';
 import { UsersComponent } from './pages/users/users/users.component';
 import { EditUserComponent } from './pages/users/edit-user/edit-user.component';
 import { OrdersComponent } from './pages/orders/orders.component';
+import { StatusOrderComponent } from './pages/status-order/status-order.component';
 
 const routes: Routes = [
   {path: '',   redirectTo: '/dashboard', pathMatch: 'full', canActivate: [LoginGuard]},
@@ -27,6 +28,7 @@ const routes: Routes = [
   {path: 'users', component: UsersComponent},
   {path: 'users/edit/:id', component: EditUserComponent},
   {path: 'orders', component: OrdersComponent},
+  {path: 'orders/status/:id', component: StatusOrderComponent},
   {path: 'login', component: LoginComponent},
   {path: '**', pathMatch: 'full', redirectTo: '/dashboard', canActivate: [LoginGuard]}
 ];

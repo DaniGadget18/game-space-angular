@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { GameModel } from '../Models/game.model';
 import {UserModel} from '../Models/user.model';
+import { OrderModel } from '../Models/order.model';
 
 
 @Injectable({
@@ -17,6 +18,7 @@ export class apiService {
     private url = 'http://game-space-api.herokuapp.com/api/games';
     private urluser = 'http://game-space-api.herokuapp.com/api/users';
     private urlstatistics = 'http://game-space-api.herokuapp.com/api/statistics';
+    private orders = 'http://game-space-api.herokuapp.com/api/order';
 
     // funciones para juegos
 
@@ -102,8 +104,9 @@ export class apiService {
     deleteUser( id:String ){
         return this.http.post(`${this.urluser}/delete/${id}`, id);
     }
+    
+    
     // Fuciones para estadisticas
-
     getSalesMonth() {
       return this.http.get(`${this.urlstatistics}/getSalesMonth`);
     }
@@ -121,6 +124,20 @@ export class apiService {
     }
     getBestUser() {
       return this.http.get(`${this.urlstatistics}/getBestUser`);
+    }
+
+
+    // funciones ordenes
+    getOrdersAll() {
+      return this.http.get(`${this.orders}/getOrders`);
+    }
+
+    statusOrder(order: OrderModel) {
+      const data = {
+        id: order.id_order,
+        status: order.status
+      }
+      return this.http.post(`${this.orders}/updateOrder`, data);
     }
 }
 

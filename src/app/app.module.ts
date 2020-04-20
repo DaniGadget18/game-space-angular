@@ -31,6 +31,7 @@ import { CreateGameComponent } from './pages/games/createGame/createGame.compone
 import { UsersComponent } from './pages/users/users/users.component';
 import { EditUserComponent } from './pages/users/edit-user/edit-user.component';
 import { OrdersComponent } from './pages/orders/orders.component';
+import { StatusOrderComponent } from './pages/status-order/status-order.component';
 
 
 
@@ -50,7 +51,8 @@ import { OrdersComponent } from './pages/orders/orders.component';
     CreateGameComponent,
     UsersComponent,
     EditUserComponent,
-    OrdersComponent
+    OrdersComponent,
+    StatusOrderComponent
 
 
   ],
