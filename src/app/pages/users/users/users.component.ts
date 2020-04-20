@@ -8,12 +8,15 @@ import Swal from "sweetalert2";
   styleUrls: ["./users.component.scss"],
 })
 export class UsersComponent implements OnInit {
+  loading:boolean = true;
+
+
   users: any[] = [];
 
   constructor(private _apiService: apiService) {
     this._apiService.getUsers().subscribe((resp: any) => {
+      this.loading = false;
       this.users = resp.data;
-      
     });
   }
 

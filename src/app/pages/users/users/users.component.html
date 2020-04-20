@@ -10,6 +10,9 @@
           <h5>Usuarios de la plataforma</h5>
         </div>
         <div class="card-body">
+          <div class="col-12 text-center">
+            <i *ngIf="loading === true" class="fa fa-sync fa-5x fa-spin text-center"></i>
+          </div>
           <div class="table-responsive-md">
             <table class="table table-hover">
               <thead>

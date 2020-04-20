@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Chart } from 'chart.js';
+import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import {apiService} from '../../services/api.services';
-import {log} from 'util';
+import { Label, Color } from 'ng2-charts';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,149 +11,106 @@ import {log} from 'util';
 })
 export class DashboardComponent implements OnInit {
 
-  // tslint:disable-next-line:no-shadowed-variable
-  constructor(private apiService: apiService) {
+  MonthsOrd: any[] = [];
+  OrdtPerMonth: any[] = [];
 
+  MonthsSal: any[] = [];
+  SalesPerMonth: any[] = [];
+  SalesPerMonthNow: any = {};
+
+  profit_day_month: any[] = [];
+  getProfitMonthday: any[]= [];
+
+  ProfitsTotal: any = {};
+
+  //Otra grafica
+  public barChartOptionsOrd: ChartOptions = {
+    responsive: true,
+  };
+  public barChartLabelsOrd: Label[] = this.MonthsOrd;
+  public barChartTypeOrd: ChartType = 'bar';
+  public barChartLegendOrd = true;
+  public barChartPluginsOrd = [];
+
+  public barChartDataOrd: ChartDataSets[] = [
+    { data: this.OrdtPerMonth, label: 'Ordenes' }
+  ];
+
+  //Otra grafica
+  public barChartOptionsSal: ChartOptions = {
+    responsive: true,
+  };
+  public barChartLabelsSal: Label[] = this.MonthsSal;
+  public barChartTypeSal: ChartType = 'bar';
+  public barChartLegendSal = true;
+  public barChartPluginsSal = [];
+
+  public barChartDataSal: ChartDataSets[] = [
+    { data: this.SalesPerMonth, label: 'Ventas' }
+  ];
+  
+
+  public barChartLabelsDay: Label[] = this.profit_day_month;
+  public barChartDataDay: ChartDataSets[] = [
+    { data: this.getProfitMonthday, label: 'Ventas' }
+  ];
+  public lineChartType = 'line';
+  public lineChartColors: Color[] = [
+    {
+      borderColor: 'black',
+      backgroundColor: 'rgba(36,41,57,0.3)',
+    },
+  ];
+
+
+  constructor(private apiservice: apiService) {
+
+    this.apiservice.getProfits().subscribe(( resp: any) => {
+      this.ProfitsTotal = resp.data[0];
+    });
+
+    this.apiservice.getSalesMonth().subscribe((resp: any) => {
+      for (let index = 0; index < resp.data.length; index++) {
+        this.MonthsSal.push(  resp.data[index].Month );
+        this.SalesPerMonth.push(  resp.data[index].Total );
+      }
+      this.SalesPerMonthNow = resp.data[0];
+      console.log(this.SalesPerMonthNow);
+    });
+
+    this.apiservice.getOrdersPerMonth().subscribe(( resp: any ) => {
+      for (let index = 0; index < resp.data.length; index++) {
+        this.MonthsOrd.push(  resp.data[index].Mes );
+        this.OrdtPerMonth.push(  resp.data[index].cantidad ); 
+      }
+    });
+
+    this.apiservice.getProfitsMonth().subscribe(( resp: any ) => {
+
+      for (let index = 0; index < resp.data.length; index++) {
+        let date = formatDate( resp.data[index].DATE, 'dd', 'en-US' );
+        this.profit_day_month.push( date );
+        this.getProfitMonthday.push(  resp.data[index].Total );
+      }
+
+    });
   }
-  MonthSsales = this.apiService.getSalesMonth().subscribe((data: any) => {
-    console.log(data.data[0]['Month']);
-    return data.data[0]['Month'];
+
+
+  
+  
+  
+  getProfitsLastFiveMonths = this.apiservice.getProfitsLastFiveMonths().subscribe((data: any) => {
+    
   }) ;
-  getProfits = this.apiService.getProfits().subscribe((data: any) => {
-    console.log(data.data[0]);
-  }) ;
-  getProfitsMonth = this.apiService.getProfitsMonth().subscribe((data: any) => {
-    console.log(data.data[0]);
-  }) ;
-  getOrdersPerMonth = this.apiService.getOrdersPerMonth().subscribe((data: any) => {
-    console.log(data.data[0]);
-  }) ;
-  getProfitsLastFiveMonths = this.apiService.getProfitsLastFiveMonths().subscribe((data: any) => {
-    console.log(data.data[0]);
-  }) ;
-  getBestUser = this.apiService.getBestUser().subscribe((data: any) => {
-    console.log(data.data[0]);
+  getBestUser = this.apiservice.getBestUser().subscribe((data: any) => {
+    
   }) ;
 
-  chart1 = {
-    data : {
-      labels: [ 'sunday' , 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-      datasets: [{
-          label: 'Premium',
-          data: [50, 80, 60, 120, 80, 100, 60],
-          backgroundColor: 'transparent',
-          borderColor: '#5b6582',
-          borderWidth: 2
-      },
-      {
-        label: 'Free',
-        data: [100, 60, 80, 50, 140, 60, 100],
-        backgroundColor: 'transparent',
-        borderColor: '#36a2eb',
-        borderWidth: 2
-      }
-    ]
-    },
-    options: {
-      scales: {
-          yAxes: [{
-            ticks: {
-                fontColor: 'rgba(0,0,0,.6)',
-                fontStyle: 'bold',
-                beginAtZero: true,
-                maxTicksLimit: 8,
-                padding: 10
-            }
-        }]
-      },
-      responsive: true,
-      legend: {
-        position: 'bottom',
-        display: false
-      },
-    }
-  };
-  chart2 = {
-    data : {
-      labels: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-      datasets: [{
-          label: 'Premium',
-          data: [50, 80, 60, 120, 80, 100, 60],
-          backgroundColor: '#5b6582',
-          borderColor: '#5b6582',
-          borderWidth: 2
-      },
-      {
-        label: 'Free',
-        data: [100, 60, 80, 50, 140, 60, 100],
-        backgroundColor: '#36a2eb',
-        borderColor: '#36a2eb',
-        borderWidth: 2
-      }
-    ]
-    },
-    options: {
-      barValueSpacing: 1,
-      scales: {
-          yAxes: [{
-            ticks: {
-                fontColor: 'rgba(0,0,0,.6)',
-                fontStyle: 'bold',
-                beginAtZero: true,
-                maxTicksLimit: 8,
-                padding: 10
-            }
-        }],
-        xAxes: [{
-          barPercentage: 0.4
-      }]
-      },
-      responsive: true,
-      legend: {
-        position: 'bottom',
-        display: false
-      },
-    }
-  };
-  chart3 = {
-    data: {
-      datasets: [{
-          data: [6, 12, 10],
-          backgroundColor: ['#5b6582', '#98a4c7', '#36a2eb'],
-      }],
-      labels: [
-          'html',
-          'css',
-          'javascript'
-      ]
-
-    },
-    options: {
-      legend: {
-        position: 'bottom',
-        display: false
-      },
-      cutoutPercentage: 80
-    }
-  };
+  
 
   ngOnInit() {
 
- new Chart('chart-line',  {
-      type: 'line',
-      data: this.chart1.data,
-      options: this.chart1.options
-    });
- new Chart('chart-bar',  {
-      type: 'bar',
-      data: this.chart2.data ,
-      options: this.chart2.options
-    });
- new Chart('chart-doughnut',  {
-      type: 'doughnut',
-      data: this.chart3.data,
-      options: this.chart3.options
-    });
 
   }
 

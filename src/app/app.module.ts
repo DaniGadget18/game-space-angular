@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
+import { ChartsModule } from 'ng2-charts';
 
 
 // componentes del cascaron
@@ -18,7 +19,6 @@ import { FooterComponent } from './components/footer/footer.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { TablesComponent } from './pages/tables/tables.component';
 import { FormsComponent } from './pages/forms/forms.component';
-import { TypographyComponent } from './pages/typography/typography.component';
 import { NotificationsComponent } from './pages/notifications/notifications.component';
 
 // componenente login
@@ -30,6 +30,7 @@ import {LoginGuard} from './login.guard';
 import { CreateGameComponent } from './pages/games/createGame/createGame.component';
 import { UsersComponent } from './pages/users/users/users.component';
 import { EditUserComponent } from './pages/users/edit-user/edit-user.component';
+import { OrdersComponent } from './pages/orders/orders.component';
 
 
 
@@ -42,14 +43,14 @@ import { EditUserComponent } from './pages/users/edit-user/edit-user.component';
     DashboardComponent,
     TablesComponent,
     FormsComponent,
-    TypographyComponent,
     NotificationsComponent,
     GamesComponent,
     LoginComponent,
     EditGameComponent,
     CreateGameComponent,
     UsersComponent,
-    EditUserComponent
+    EditUserComponent,
+    OrdersComponent
 
 
   ],
@@ -60,6 +61,7 @@ import { EditUserComponent } from './pages/users/edit-user/edit-user.component';
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
+    ChartsModule,
     CollapseModule.forRoot(),
     ToastrModule.forRoot()
     ],
