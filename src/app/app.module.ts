@@ -32,9 +32,7 @@ import {LoginGuard} from './login.guard';
 import { CreateGameComponent } from './pages/games/createGame/createGame.component';
 import { UsersComponent } from './pages/users/users/users.component';
 
-import { ComponentesComponent } from './componentes/componentes.component';
-import { ComponentsComponent } from './components/components.component';
-import { RegisterusersComponent } from './registerusers/registerusers.component';
+
 
 import { EditUserComponent } from './pages/users/edit-user/edit-user.component';
 
@@ -57,10 +55,6 @@ import { EditUserComponent } from './pages/users/edit-user/edit-user.component';
     EditGameComponent,
     CreateGameComponent,
     UsersComponent,
-
-    ComponentesComponent,
-    ComponentsComponent,
-    RegisterusersComponent
 
     EditUserComponent
 
