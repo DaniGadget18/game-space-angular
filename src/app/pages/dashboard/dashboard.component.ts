@@ -23,6 +23,10 @@ export class DashboardComponent implements OnInit {
 
   ProfitsTotal: any = {};
 
+  totalUsers: any;
+
+  month = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+  lastmonth:any;
   //Otra grafica
   public barChartOptionsOrd: ChartOptions = {
     responsive: true,
@@ -58,7 +62,7 @@ export class DashboardComponent implements OnInit {
   public lineChartColors: Color[] = [
     {
       borderColor: 'black',
-      backgroundColor: 'rgba(36,41,57,0.3)',
+      backgroundColor: 'rgba(36,41,57,0.8)',
     },
   ];
 
@@ -70,17 +74,22 @@ export class DashboardComponent implements OnInit {
     });
 
     this.apiservice.getSalesMonth().subscribe((resp: any) => {
+      let ultimo:number;
       for (let index = 0; index < resp.data.length; index++) {
-        this.MonthsSal.push(  resp.data[index].Month );
+        this.MonthsSal.push(  this.month[resp.data[index].Month -1 ] );
         this.SalesPerMonth.push(  resp.data[index].Total );
+        ultimo = index;
       }
-      this.SalesPerMonthNow = resp.data[0];
+      this.SalesPerMonthNow = resp.data[ultimo];
       console.log(this.SalesPerMonthNow);
+      console.log(resp.data[ultimo].Month);
+      this.lastmonth = this.month[resp.data[ultimo].Month - 1];
+      
     });
 
     this.apiservice.getOrdersPerMonth().subscribe(( resp: any ) => {
       for (let index = 0; index < resp.data.length; index++) {
-        this.MonthsOrd.push(  resp.data[index].Mes );
+        this.MonthsOrd.push(  this.month[resp.data[index].Mes - 1] );
         this.OrdtPerMonth.push(  resp.data[index].cantidad ); 
       }
     });
@@ -94,12 +103,12 @@ export class DashboardComponent implements OnInit {
       }
 
     });
+
+    this.apiservice.countAllUser().subscribe( (resp:any) =>{
+      this.totalUsers = resp.data;
+    });
   }
 
-
-  
-  
-  
   getProfitsLastFiveMonths = this.apiservice.getProfitsLastFiveMonths().subscribe((data: any) => {
     
   }) ;
@@ -111,7 +120,11 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
 
+    if ( localStorage.getItem('ux') === '1' ){
+      location.reload();
+      localStorage.setItem('ux', '2');
 
+    } 
   }
 
 }

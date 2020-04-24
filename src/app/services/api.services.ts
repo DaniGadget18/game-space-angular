@@ -139,6 +139,24 @@ export class apiService {
       }
       return this.http.post(`${this.orders}/updateOrder`, data);
     }
+
+    getOneOrder(id_order) {
+      const data = {
+        id: id_order
+      }
+      return this.http.get(`${this.orders}/getOneOrder/${id_order}`);
+    }
+
+    countAllUser() {
+      return this.http.get(`${this.urluser}/getAllUserCount`);
+    }
+
+    getOrderDetails(id) {
+      const data = {
+        id: id
+      }
+      return this.http.post(`${this.orders}/getOrdersDetails`, data);
+    }
 }
 
 

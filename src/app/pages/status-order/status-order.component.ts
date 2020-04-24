@@ -13,6 +13,8 @@ import Swal from 'sweetalert2';
 export class StatusOrderComponent implements OnInit {
 
   order = new OrderModel();
+  games:any[] = [];
+  orderall:any[] = [];
 
   constructor( private activatedrouter: ActivatedRoute,
                private apiservice: apiService ) {
@@ -20,34 +22,20 @@ export class StatusOrderComponent implements OnInit {
       this.order.id_order = params.id;
     });
 
+    this.apiservice.getOrderDetails(this.order.id_order).subscribe( (resp:any) => {
+      console.log(resp);
+      for (let index = 0; index < resp.data.length; index++) {
+        this.games.push(resp.data[index].game_id);
+        
+      }
 
+      this.orderall = resp.orden[0];
 
-   }
+    });
 
-  ngOnInit() {
   }
 
-  getidOrder( ngform:NgForm ) {
-    this.order.status = ngform.value.status
-
-    this.apiservice.statusOrder(this.order).subscribe( resp => {
-    Swal.fire({
-      position: 'center',
-      icon: 'success',
-      title: 'Se ha cambiado el estado del orden',
-      showConfirmButton: false,
-      timer: 1500
-    })
-    }, error => {
-       
-        Swal.fire({
-          position: 'center',
-          icon: 'error',
-          title: 'Hubo un problema',
-          showConfirmButton: false,
-          timer: 1500
-        })
-    });
+  ngOnInit() {
   }
 
 }

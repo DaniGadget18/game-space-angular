@@ -16,11 +16,14 @@
                 <th style="width:20%;">Ciudad</th>
                 <th style="width:20%;">Dirección</th>
                 <th style="width:20%;">Fecha</th>
-                <th class="Acciones" style="width:5%;">Acciones</th>
                 <th style="width:20%;">Estado</th>
+                <th class="Acciones" style="width:5%;">Acciones</th>
+                
+                <th style="width:20%;">Email</th>
               </tr>
             </thead>
             <tbody class="no-border-x">
+              <div *ngIf="!orders"> No hay ordenes aun </div>
               <tr *ngFor="let order of orders">
                 <td>{{order.id}}</td>
                 <td class="number">{{ order.customer_name }}</td>
@@ -28,12 +31,13 @@
                 <td>{{order.city}}</td>
                 <td>{{order.adress}}</td>
                 <td>{{order.created_at | date}}</td>
-                <button [routerLink]="['orders/status', order.id]" class="btn btn-sm btn-outline-lightning rounded-0"><i class="fa fa-eject mr-1 pt-2"></i>Estado</button>
+                <button [routerLink]="['/orders/status', order.id]" class="btn btn-sm btn-outline-lightning rounded-0"><i class="fa fa-eject mr-1 pt-2"></i>Detalles</button>
                 <td>
-                  <div *ngIf="order.status == 'Complete'" class="badge badge-success">Completado</div>
-                  <div *ngIf="order.status == 'Pending'" class="badge badge-info">Pendiente</div>
-                  <div *ngIf="order.status == 'Cancel'" class="badge badge-danger">Cancelado</div>
+                  <div *ngIf="order.status == 'active'" class="badge badge-success">Completado</div>
+                  <div *ngIf="order.status != 'active'" class="badge badge-success">Pendiente</div>
+                  
                 </td>
+                <button (click)="sendOrder(order.id)" class="btn btn-sm btn-outline-lightning rounded-0"><i class="fa fa-mail-bulk mr-1 pt-2"></i></button>
               </tr>
             </tbody>
           </table>
