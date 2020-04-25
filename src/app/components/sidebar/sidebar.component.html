@@ -7,7 +7,7 @@
       </div>
     </div>
     <div class="profile-details text-center pb-4">
-      <p class="mb-0 text-uppercase name">Daniel Rodriguez</p>
+      <p class="mb-0 text-uppercase name" >{{usuario}}</p>
       <small class="text-uppercase role">Administrador</small>
     </div>
   </div>
@@ -26,6 +26,12 @@
           <span class="badge badge-warning rounded-0 text-dark p-1">NEW</span>
         </a>
       </li>
+      <li >
+        <a href="#" routerLink="/orders" routerLinkActive="active">
+          <i class="fa fa-shopping-cart"></i>
+          <span>Ordenes</span>
+        </a>
+      </li>
       <li>
         <a href="#" routerLink="/games" routerLinkActive="active">
           <i class="fa fa-gamepad"></i>
@@ -36,24 +42,6 @@
         <a href="#" routerLink="/users" routerLinkActive="active">
           <i class="fas fa-user"></i>
           <span>Usuarios</span>
-        </a>
-      </li>
-      <li>
-        <a href="#" routerLink="/tables" routerLinkActive="active">
-          <i class="fa fa-table"></i>
-          <span>Tables</span>
-        </a>
-      </li>
-      <li>
-        <a href="#" routerLink="/typography" routerLinkActive="active">
-          <i class="fa fa-align-center"></i>
-          <span>Typography</span>
-        </a>
-      </li>
-      <li>
-        <a href="#" routerLink="/notifications" routerLinkActive="active">
-          <i class="fas fa-bell"></i>
-          <span>Notifications</span>
         </a>
       </li>
     </ul>  

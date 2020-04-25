@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { TablesComponent } from './pages/tables/tables.component';
 import { FormsComponent } from './pages/forms/forms.component';
-import { TypographyComponent } from './pages/typography/typography.component';
 import { GamesComponent } from './pages/games/games/games.component';
 import { NotificationsComponent } from './pages/notifications/notifications.component';
 import { EditGameComponent } from './pages/games/editGame/editGame.component';
@@ -12,19 +11,24 @@ import {LoginComponent} from './components/login/login.component';
 import {LoginGuard} from './login.guard';
 import { UsersComponent } from './pages/users/users/users.component';
 import { EditUserComponent } from './pages/users/edit-user/edit-user.component';
+import { OrdersComponent } from './pages/orders/orders.component';
+import { StatusOrderComponent } from './pages/status-order/status-order.component';
 
 const routes: Routes = [
   {path: '',   redirectTo: '/dashboard', pathMatch: 'full', canActivate: [LoginGuard]},
   {path: 'dashboard', component: DashboardComponent , canActivate: [LoginGuard]},
   {path: 'forms', component: FormsComponent , canActivate: [LoginGuard]},
   {path: 'tables', component: TablesComponent , canActivate: [LoginGuard]},
-  {path: 'typography', component: TypographyComponent , canActivate: [LoginGuard]},
   {path: 'notifications', component: NotificationsComponent , canActivate: [LoginGuard]},
+
+  // Rutas de la app
   {path: 'games', component: GamesComponent},
   {path: 'games/create', component: CreateGameComponent},
   {path: 'games/edit/:id', component: EditGameComponent},
   {path: 'users', component: UsersComponent},
   {path: 'users/edit/:id', component: EditUserComponent},
+  {path: 'orders', component: OrdersComponent},
+  {path: 'orders/status/:id', component: StatusOrderComponent},
   {path: 'login', component: LoginComponent},
   {path: '**', pathMatch: 'full', redirectTo: '/dashboard', canActivate: [LoginGuard]}
 ];

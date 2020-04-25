@@ -1,22 +1,24 @@
 <div class="wrapper fadeInDown">
-  <div id="formContent">
+  <div id="formContent" class="mt-5">
     <!-- Tabs Titles -->
 
     <!-- Icon -->
-    <div class="fadeIn first">
+    <div class="fadeIn first p-5">
+
+      <h3>Bienvenido</h3>
 
     </div>
 
     <!-- Login Form -->
     <form #LoginForm="ngForm" (ngSubmit)="login(LoginForm)" >
-      <input type="text" id="email" class="fadeIn second" name="email" placeholder="email" ngModel>
-      <input type="text" id="password" class="fadeIn third" name="password" placeholder="password" ngModel>
-      <input type="submit" class="fadeIn fourth" value="Log In">
+      <input type="text" id="email" class="fadeIn second" name="email" placeholder="Correo electronico" [(ngModel)]="user.email">
+      <input type="password" id="password" class="fadeIn third" name="password" placeholder="Contraseña" [(ngModel)]="user.password">
+      <input type="submit" class="fadeIn fourth" value="Entrar">
     </form>
 
     <!-- Remind Passowrd -->
     <div id="formFooter">
-      <a class="underlineHover" href="#">Register</a>
+      <a class="underlineHover" href="#">Registrar</a>
     </div>
 
   </div>

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { GameModel } from '../Models/game.model';
 import {UserModel} from '../Models/user.model';
+import { OrderModel } from '../Models/order.model';
 
 
 @Injectable({
@@ -16,6 +17,10 @@ export class apiService {
 
     private url = 'http://game-space-api.herokuapp.com/api/games';
     private urluser = 'http://game-space-api.herokuapp.com/api/users';
+    private urlstatistics = 'http://game-space-api.herokuapp.com/api/statistics';
+    private orders = 'http://game-space-api.herokuapp.com/api/order';
+
+    // funciones para juegos
 
     getGames() {
         return this.http.get(`${this.url}/get-games`);
@@ -60,13 +65,9 @@ export class apiService {
         return this.http.get(`${this.url}/gamebyid/${id}`);
 
     }
-    log( email: string, password: string ) {
-       const data = {
-         email: email,
-         password: password
-       };
-      return this.http.post(`${this.urluser}/login`, data);
-    }
+
+
+    // funciones para usuarios
 
     getUsers() {
         return this.http.get(`${this.urluser}/get-users`);
@@ -88,17 +89,56 @@ export class apiService {
         return this.http.get(`${this.urluser}/getusersById/${id}`);
     }
 
-    editUser(user: UserModel){
-        console.log(localStorage.getItem('token'));
+    editUser(user: UserModel, _id:String){
         const headers = new HttpHeaders({
             'token':localStorage.getItem('token'),
         });
         const data = {
-            ...user
+            data: user.data,
+            role: user.role,
+            id: _id
         };
         return this.http.post(`${this.urluser}/update`, data, { headers });
     }
 
+    deleteUser( id:String ){
+        return this.http.post(`${this.urluser}/delete/${id}`, id);
+    }
+    
+    
+    // Fuciones para estadisticas
+    getSalesMonth() {
+      return this.http.get(`${this.urlstatistics}/getSalesMonth`);
+    }
+    getProfits() {
+      return this.http.get(`${this.urlstatistics}/getProfits`);
+    }
+    getProfitsMonth() {
+      return this.http.get(`${this.urlstatistics}/getProfitsMonth`);
+    }
+    getOrdersPerMonth() {
+      return this.http.get(`${this.urlstatistics}/getOrdersPerMonth`);
+    }
+    getProfitsLastFiveMonths() {
+      return this.http.get(`${this.urlstatistics}/getProfitsLastFiveMonths`);
+    }
+    getBestUser() {
+      return this.http.get(`${this.urlstatistics}/getBestUser`);
+    }
+
+
+    // funciones ordenes
+    getOrdersAll() {
+      return this.http.get(`${this.orders}/getOrders`);
+    }
+
+    statusOrder(order: OrderModel) {
+      const data = {
+        id: order.id_order,
+        status: order.status
+      }
+      return this.http.post(`${this.orders}/updateOrder`, data);
+    }
 }
 
 

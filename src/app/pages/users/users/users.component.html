@@ -10,6 +10,9 @@
           <h5>Usuarios de la plataforma</h5>
         </div>
         <div class="card-body">
+          <div class="col-12 text-center">
+            <i *ngIf="loading === true" class="fa fa-sync fa-5x fa-spin text-center"></i>
+          </div>
           <div class="table-responsive-md">
             <table class="table table-hover">
               <thead>
@@ -33,7 +36,7 @@
                     <div [routerLink]="['/users/edit/',user._id]" class="btn btn-sm btn-warning rounded-0 mr-2 ">
                       <i class="far fa-edit"></i>
                     </div>
-                    <div class="btn btn-sm btn-danger rounded-0">
+                    <div (click)='deleteUser(user._id, user.username)' class="btn btn-sm btn-danger rounded-0">
                       <i class="far fa-trash-alt"></i>
                     </div>
                   </td>
