@@ -12,7 +12,7 @@
             </div>
             <div class="ml-auto">
               <p class="card-label text-right text-muted">Ventas del mes de: {{lastmonth || "Ninguno"}}</p>
-              <h4 class="card-text text-right "> {{SalesPerMonthNow.Total || 0}} </h4>
+              <h4 class="card-text text-right "> ${{SalesPerMonthNow.Total || 0}} </h4>
             </div>
           </div>
         </div>
@@ -35,7 +35,7 @@
             </div>
             <div class="ml-auto">
               <p class="card-label text-right text-muted">Ganancias totales</p>
-              <h4 class="card-text text-right ">{{ ProfitsTotal.Total || 0 }}</h4>
+              <h4 class="card-text text-right "> ${{ ProfitsTotal.Total || 0 }}</h4>
             </div>
           </div>
         </div>
@@ -77,11 +77,11 @@
         <div class="card-body">
           <div class="card-innerBody d-flex align-items-center">
             <div class="card-icon text-light">
-              <i class="fas fa-user-circle" aria-hidden="true"></i>
+              <i class="fas fa-shopping-cart" aria-hidden="true"></i>
             </div>
             <div class="ml-auto">
               <p class="card-label text-right text-muted">Total de ordenes</p>
-              <h4 class="card-text text-right "> {{totalUsers || 0}} Usuarios</h4>
+              <h4 class="card-text text-right "> {{countAllOrder.cantidad || 0}} Ordenes</h4>
             </div>
           </div>
         </div>

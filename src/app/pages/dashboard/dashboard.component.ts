@@ -11,6 +11,8 @@ import { formatDate } from '@angular/common';
 })
 export class DashboardComponent implements OnInit {
 
+  countAllOrder:any = {};
+
   MonthsOrd: any[] = [];
   OrdtPerMonth: any[] = [];
 
@@ -81,10 +83,7 @@ export class DashboardComponent implements OnInit {
         ultimo = index;
       }
       this.SalesPerMonthNow = resp.data[ultimo];
-      console.log(this.SalesPerMonthNow);
-      console.log(resp.data[ultimo].Month);
       this.lastmonth = this.month[resp.data[ultimo].Month - 1];
-      
     });
 
     this.apiservice.getOrdersPerMonth().subscribe(( resp: any ) => {
@@ -107,16 +106,13 @@ export class DashboardComponent implements OnInit {
     this.apiservice.countAllUser().subscribe( (resp:any) =>{
       this.totalUsers = resp.data;
     });
+
+    this.apiservice.getCountOrders().subscribe( (resp:any) => {
+      this.countAllOrder = resp.data[0];
+      console.log(this.countAllOrder);
+    });
   }
 
-  getProfitsLastFiveMonths = this.apiservice.getProfitsLastFiveMonths().subscribe((data: any) => {
-    
-  }) ;
-  getBestUser = this.apiservice.getBestUser().subscribe((data: any) => {
-    
-  }) ;
-
-  
 
   ngOnInit() {
 

@@ -60,4 +60,10 @@ export class OrdersComponent implements OnInit {
       console.log(error);
     });
   }
+
+  sendOrdRefound(id_order) {
+    this.apiservice.refound(id_order).subscribe( (resp:any) => {
+      console.log(resp);
+    });
+  }
 }
