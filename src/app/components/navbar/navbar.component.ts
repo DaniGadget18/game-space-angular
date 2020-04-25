@@ -9,6 +9,8 @@ import {Router} from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
+  user = localStorage.getItem('email');
+
   constructor(private appService: AppService, private router: Router) { }
   isCollapsed = true;
   ngOnInit() {
@@ -22,10 +24,12 @@ export class NavbarComponent implements OnInit {
   }
   logout() {
     // @ts-ignore
-    localStorage.removeItem(['log']);
+    localStorage.removeItem('log');
+    localStorage.removeItem('email');
     // @ts-ignore
-    localStorage.removeItem(['token']);
+    localStorage.removeItem('token');
     this.router.navigate(['/login']);
+    location.reload();
   }
 
 }

@@ -45,6 +45,7 @@ export class LoginComponent implements OnInit {
           .subscribe((resp) => {
             localStorage.setItem('log', 'on');
             localStorage.setItem('email', form.value.email);
+            localStorage.setItem('ux', '1');
             this.router.navigate(['/dashboard']);
           }, (err) => {
             if(err.error['status'] === 'error'){

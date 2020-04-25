@@ -24,6 +24,7 @@ export class LoginGuard implements CanActivate, CanActivateChild, CanLoad {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     // @ts-ignore
     if (localStorage.getItem([ 'log' ]) === 'on') {
+      
       return true;
     } else {
       this.router.navigate(['/login']);

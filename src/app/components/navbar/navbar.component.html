@@ -64,7 +64,7 @@
           <span class="link-text">Configuracion</span>
         </a>
       </li>-->
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="user">
         <a class="btn nav-link" (click)="logout()">
           <i class="far fa-times-circle"></i>
           <span class="link-text">Salir</span>

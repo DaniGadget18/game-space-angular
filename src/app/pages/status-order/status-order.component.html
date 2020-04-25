@@ -1,34 +1,22 @@
-<div class="col-md-12 col-lg-8 mb-4 align-items-stretch">
+<div class="col-md-12 col-lg-12 mb-4 align-items-stretch">
   <div class="card border-0 rounded-0 h-100">
     <div class="card-title mb-1 p-3">
-      <h5>Registrar juego</h5>
+      <h2>Detalle de la orden</h2>
     </div>
     <div class="card-body">
-      <form (ngSubmit)="getidOrder(f)" 
-      #f="ngForm">
-        <div class="form-group row">
-          <label for="id"  class="col-sm-2 col-form-label text-nowrap">ID Orden</label>
-          <div class="col-sm-10">
-            <input disabled type="text" name="id" [(ngModel)]="order.id_order" class="form-control rounded-0" id="id" aria-describedby="emailHelp"
-              placeholder="Id de la orden">
-          </div>
+      <h3>Juegos adquiridos en la orden</h3>
+      <div class="row">
+        <div class="col-6">
+          <ul class="list-group">
+            <li *ngFor="let game of games" class="list-group-item">{{game.title}} - <img style="width: 10%;" src="{{game.image}}"></li>
+          </ul>
         </div>
-        <div class="form-group">
-          <label for="exampleFormControlSelect1">Estado:</label>
-          <select name="status" [(ngModel)]="order.status" class="form-control rounded-0" id="status">
-            <option value="Complete">Completado</option>
-            <option value="Pending">Pendiente</option>
-            <option value="Cancel">Cancelado</option>
-          </select>
+        <div class="col-6">
+          <h3>Total en $ de la compra</h3>
+          <h4 style="color: greenyellow;"> <i class="fa fa-dollar-sign"></i> {{orderall['total'] || 0}} </h4>
         </div>
-        <div class="form-group row">
-          <label for="" class="col-sm-2 col-form-label"></label>
-          <div class="col-sm-12">
-            <button type="submit" class="btn btn-outline-lightning rounded-0 m-3">Confirmar</button>
-            <button routerLink="/orders" type="button" class="btn btn-outline-danger rounded-0 m-3">regresar</button>
-          </div>
-        </div>
-      </form>
+      </div>
+      
     </div>
   </div>
 </div>

@@ -22,15 +22,15 @@ const routes: Routes = [
   {path: 'notifications', component: NotificationsComponent , canActivate: [LoginGuard]},
 
   // Rutas de la app
-  {path: 'games', component: GamesComponent},
-  {path: 'games/create', component: CreateGameComponent},
-  {path: 'games/edit/:id', component: EditGameComponent},
-  {path: 'users', component: UsersComponent},
-  {path: 'users/edit/:id', component: EditUserComponent},
-  {path: 'orders', component: OrdersComponent},
-  {path: 'orders/status/:id', component: StatusOrderComponent},
+  {path: 'games', component: GamesComponent, canActivate:[LoginGuard]},
+  {path: 'games/create', component: CreateGameComponent, canActivate:[LoginGuard]},
+  {path: 'games/edit/:id', component: EditGameComponent, canActivate:[LoginGuard]},
+  {path: 'users', component: UsersComponent, canActivate:[LoginGuard]},
+  {path: 'users/edit/:id', component: EditUserComponent, canActivate:[LoginGuard]},
+  {path: 'orders', component: OrdersComponent, canActivate:[LoginGuard]},
+  {path: 'orders/status/:id', component: StatusOrderComponent, canActivate:[LoginGuard]},
   {path: 'login', component: LoginComponent},
-  {path: '**', pathMatch: 'full', redirectTo: '/dashboard', canActivate: [LoginGuard]}
+  {path: '**', pathMatch: 'full', redirectTo: '/dashboard', canActivate:[LoginGuard]}
 ];
 
 @NgModule({

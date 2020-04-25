@@ -10,6 +10,8 @@ import {Router} from '@angular/router';
 export class AppComponent {
   title = 'pro-dashboard-angular';
 
+  user = localStorage.getItem('email');
+
   constructor(private appService: AppService, private router: Router) {}
   getClasses() {
     const classes = {
