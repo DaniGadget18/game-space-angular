@@ -113,9 +113,7 @@ export class apiService {
     getProfits() {
       return this.http.get(`${this.urlstatistics}/getProfits`);
     }
-    getProfitsMonth() {
-      return this.http.get(`${this.urlstatistics}/getProfitsMonth`);
-    }
+    
     getOrdersPerMonth() {
       return this.http.get(`${this.urlstatistics}/getOrdersPerMonth`);
     }
@@ -125,6 +123,20 @@ export class apiService {
     getBestUser() {
       return this.http.get(`${this.urlstatistics}/getBestUser`);
     }
+
+
+      //nuevas
+
+    getProfitsMonth(year) {
+      return this.http.post(`${this.orders}/getOrdersProfitPerYear/`, {year: year});
+
+    }
+
+    getOrdersMonth( year) {
+      return this.http.post(`${this.orders}/getOrdersProfitPerYear/`, {year: year});
+    }
+
+    
 
 
     // funciones ordenes

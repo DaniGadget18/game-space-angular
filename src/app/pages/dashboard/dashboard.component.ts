@@ -21,9 +21,16 @@ export class DashboardComponent implements OnInit {
   profit_day_month: any[] = [];
   getProfitMonthday: any[]= [];
 
+  dropDownData: any[]= [
+    2020,
+    2018,
+    2019,
+  ];
+
   ProfitsTotal: any = {};
 
   totalUsers: any;
+  year: any;
 
   month = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
   lastmonth:any;
@@ -37,7 +44,7 @@ export class DashboardComponent implements OnInit {
   public barChartPluginsOrd = [];
 
   public barChartDataOrd: ChartDataSets[] = [
-    { data: this.OrdtPerMonth, label: 'Ordenes' }
+    { data: this.OrdtPerMonth, label: 'Ordenes' } 
   ];
 
   //Otra grafica
@@ -66,8 +73,14 @@ export class DashboardComponent implements OnInit {
     },
   ];
 
+  onOptionsSelected(anio){
+    this.year = anio;
+    console.log(anio);
+  }
 
   constructor(private apiservice: apiService) {
+
+    this.year = 2018;
 
     this.apiservice.getProfits().subscribe(( resp: any) => {
       this.ProfitsTotal = resp.data[0];
@@ -87,20 +100,27 @@ export class DashboardComponent implements OnInit {
       
     });
 
-    this.apiservice.getOrdersPerMonth().subscribe(( resp: any ) => {
+    //nueva
+    this.apiservice.getOrdersMonth(this.year).subscribe(( resp: any ) => {
+      console.log(this.year);
       for (let index = 0; index < resp.data.length; index++) {
         this.MonthsOrd.push(  this.month[resp.data[index].Mes - 1] );
         this.OrdtPerMonth.push(  resp.data[index].cantidad ); 
       }
     });
 
-    this.apiservice.getProfitsMonth().subscribe(( resp: any ) => {
+    
 
+    this.apiservice.getProfitsMonth(this.year).subscribe(( resp: any ) => {
+
+      console.log(resp)
       for (let index = 0; index < resp.data.length; index++) {
-        let date = formatDate( resp.data[index].DATE, 'dd', 'en-US' );
+        let date = formatDate( resp.data[index].Date, 'dd', 'en-US' );
         this.profit_day_month.push( date );
         this.getProfitMonthday.push(  resp.data[index].Total );
       }
+
+        
 
     });
 
