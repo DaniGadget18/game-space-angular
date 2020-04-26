@@ -169,6 +169,23 @@ export class apiService {
       }
       return this.http.post(`${this.orders}/getOrdersDetails`, data);
     }
+
+    getCountOrders() {
+      return this.http.get(`${this.orders}/getCountOrders`);
+    }
+
+    refound( id ) {
+      const data = {
+        'Orders_id':id,
+        'reason':'Cancelado por el administrador'
+      }
+
+      return this.http.post(`${this.orders}/refound`, data);
+    }
+
+    getRefound() {
+      return this.http.get(`${this.orders}/getrefound`);
+    }
 }
 
 

@@ -13,6 +13,7 @@ import { UsersComponent } from './pages/users/users/users.component';
 import { EditUserComponent } from './pages/users/edit-user/edit-user.component';
 import { OrdersComponent } from './pages/orders/orders.component';
 import { StatusOrderComponent } from './pages/status-order/status-order.component';
+import { RefoundComponent } from './pages/refound/refound.component';
 
 const routes: Routes = [
   {path: '',   redirectTo: '/dashboard', pathMatch: 'full', canActivate: [LoginGuard]},
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path: 'notifications', component: NotificationsComponent , canActivate: [LoginGuard]},
 
   // Rutas de la app
+  {path: 'refound', component: RefoundComponent, canActivate:[LoginGuard]},
   {path: 'games', component: GamesComponent, canActivate:[LoginGuard]},
   {path: 'games/create', component: CreateGameComponent, canActivate:[LoginGuard]},
   {path: 'games/edit/:id', component: EditGameComponent, canActivate:[LoginGuard]},
